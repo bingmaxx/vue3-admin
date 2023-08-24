@@ -1,0 +1,138 @@
+@import './variables.scss';
+@import './mixin.scss';
+
+html {
+  box-sizing: border-box;
+}
+
+body,
+div,
+ol,
+ul,
+li,
+dl,
+dt,
+dd,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+p,
+pre,
+form,
+fieldset,
+legend,
+input {
+  margin: 0;
+  padding: 0;
+}
+
+*,
+*:before,
+*:after {
+  box-sizing: inherit;
+}
+
+a:focus,
+a:active {
+  outline: none;
+}
+
+a,
+a:focus,
+a:hover {
+  cursor: pointer;
+  color: inherit;
+  text-decoration: none;
+}
+
+.clearfix {
+  &:after {
+    visibility: hidden;
+    display: block;
+    font-size: 0;
+    content: " ";
+    clear: both;
+    height: 0;
+  }
+}
+
+#nprogress .bar {
+  background: var(--el-color-primary) !important;
+}
+
+.flex-wrap-wrap {
+  flex-wrap: wrap;
+}
+
+a {
+  color: #1890ff;
+  text-decoration: none;
+  background-color: transparent;
+  outline: none;
+  cursor: pointer;
+  transition: color .3s;
+}
+
+a:active,
+a:hover {
+  text-decoration: none;
+  outline: 0;
+}
+
+a:active {
+  color: #096dd9;
+}
+
+a:hover {
+  color: #40a9ff;
+}
+
+.border-solid-transparent {
+  border: solid 1px transparent;
+}
+
+.text-align-right {
+  text-align: right;
+}
+
+.float-right {
+  float: right;
+}
+
+.padding-t10 {
+  padding-top: 10px;
+}
+
+.cursor-pointer {
+  cursor: pointer;
+}
+
+.g-t-im {
+  font-size: $f-s-sm;
+  color: $c-f1;
+  font-weight: 500;
+}
+
+.g-t-desc {
+  font-size: $f-s-sm;
+  color: $c-f1;
+}
+
+.g-t-ex {
+  font-size: $f-s-sm;
+  color: $c-f2;
+}
+
+.g-t-oneline {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.g-page {
+  margin: 20px 0;
+  float: right;
+}
