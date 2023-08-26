@@ -1,6 +1,7 @@
 <script setup lang="ts">
+
 </script>
 
 <template>
-  <p>haha</p>
+  <p>login</p>
 </template>

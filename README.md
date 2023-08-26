@@ -25,7 +25,7 @@ npm run lint
 npm --registry https://registry.npm.taobao.org install -D sass
 ```
 
-vite 配置文件 vite.config.ts 中添加 如下配置：
+vite 配置文件 vite.config.ts 中添加如下配置：
 ```ts
 export default defineConfig({
   css: {
