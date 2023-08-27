@@ -47,6 +47,13 @@ export default defineConfig({
 })
 ```
 
+## axios
+
+```sh
+npm i axios
+```
+
+之后在 `utils/request.ts` 文件下封装 axios 请求。具体接口见 `api` 目录。
 
 ## 使用 Mock
 基于 [vite-plugin-mock](https://github.com/vbenjs/vite-plugin-mock) 实现，细节见文档。
