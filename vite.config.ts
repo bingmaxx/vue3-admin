@@ -9,8 +9,8 @@ export default defineConfig(({ command, mode }) => {
     plugins: [
       vue(),
       viteMockServe({
-        mockPath: 'mock',
-        enable: env.VITE_MOCK === 'true' ? true : false,
+        mockPath: './src/mock',
+        enable: true,
       }),
     ],
 
