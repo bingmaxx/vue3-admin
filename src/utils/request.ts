@@ -44,14 +44,7 @@ const errorHandler = (error: any) => {
     const reqUrl = url.split("?")[0].replace(baseURL, '');
     const noVerifyBool = noVerifyUrl.includes(reqUrl);
     if (!noVerifyBool) {
-      // ElNotification({
-      //   type: 'error',
-      //   title: `提示`,
-      //   message: customCodeMessage[code] || msg || 'Error',
-      // });
       console.log('[LOG] ', customCodeMessage[code] || msg || 'Error');
-      
-
       if (code === 4001) {
         router.replace('/user/login');
       }
@@ -61,19 +54,9 @@ const errorHandler = (error: any) => {
   } else if (response && response.status) {
     const errorText = serverCodeMessage[response.status] || response.statusText;
     const { status, request } = response;
-    // ElNotification({
-    //   type: 'error',
-    //   title: `请求错误 ${status}: ${request.responseURL}`,
-    //   message: errorText,
-    // });
     console.log('[LOG] ', status, request, errorText);
 
   } else if (!response) {
-    // ElNotification({
-    //   type: 'error',
-    //   title: '网络异常',
-    //   message: '您的网络发生异常，无法连接服务器',
-    // });
     console.log('[LOG] ', '网络异常');
   }
 
@@ -84,33 +67,9 @@ const errorHandler = (error: any) => {
  * 配置request请求时的默认参数
  */
 const request = axios.create({
-  // baseURL: import.meta.env.VITE_BASE_PATH, // url = api url + request url
   withCredentials: true, // 当跨域请求时发送cookie
   timeout: 0 // 请求超时时间,5000(单位毫秒) / 0 不做限制
 });
-// request.defaults.headers.post['Content-Type'] = 'application/x-www-form-urlencoded;charset=UTF-8'; // 全局设置 - post请求头
-
-/**
- * 请求前 - 请求拦截器
- */
-// request.interceptors.request.use(
-//   async (config: AxiosRequestConfig & { cType?: boolean }) => {
-//     // ElMessage.success(JSON.stringify(config));
-
-//     // 如果设置了cType 说明是自定义 添加 Content-Type类型 为自定义post 做铺垫
-//     if (config['cType'] && config.headers) {
-//       config.headers['Content-Type'] = 'application/x-www-form-urlencoded;charset=UTF-8';
-//     }
-
-//     // 自定义添加token header
-//     const headerToken = await getToken();
-//     if (headerToken && config.headers) {
-//       config.headers[LSKey.token] = headerToken;
-//     }
-
-//     return config;
-//   },
-// );
 
 /**
  * 请求后 - 响应拦截器
