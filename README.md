@@ -80,4 +80,19 @@ export default defineConfig({
 之后在 `mock` 目录中添加测试接口。
 
 
+## vite 使用环境变量
+[vite - 环境变量和模式](https://cn.vitejs.dev/guide/env-and-mode.html)
 
+可以通过 `import.meta.env` 使用定义在 `.env`、`.env.[mode]` 文件中的环境变量，有两个限制，一是除了内建变量（MODE、BASE_URL、PROD、DEV、SSR）只能获取 `VITE` 开头的环境变量；二是 import.meta.env 只能在业务代码中获取环境变量，在 vite.config.js 中需要按照如下方式获取环境变量：
+```ts
+import { defineConfig, loadEnv } from 'vite'
+// 从默认的对象方式变成函数配置方式
+export default defineConfig(({ command, mode }) => {
+  const env = loadEnv(mode, process.cwd());
+  const VITE_BASE_PATH = env.VITE_BASE_PATH;
+  return {
+    plugins: [
+      vue(),
+    ],}
+})
+```
