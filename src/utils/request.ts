@@ -84,7 +84,7 @@ const errorHandler = (error: any) => {
  * 配置request请求时的默认参数
  */
 const request = axios.create({
-  baseURL: process.env.VUE_APP_APIHOST, // url = api url + request url
+  // baseURL: import.meta.env.VITE_BASE_PATH, // url = api url + request url
   withCredentials: true, // 当跨域请求时发送cookie
   timeout: 0 // 请求超时时间,5000(单位毫秒) / 0 不做限制
 });
@@ -93,24 +93,24 @@ const request = axios.create({
 /**
  * 请求前 - 请求拦截器
  */
-request.interceptors.request.use(
-  async (config: AxiosRequestConfig & { cType?: boolean }) => {
-    // ElMessage.success(JSON.stringify(config));
+// request.interceptors.request.use(
+//   async (config: AxiosRequestConfig & { cType?: boolean }) => {
+//     // ElMessage.success(JSON.stringify(config));
 
-    // 如果设置了cType 说明是自定义 添加 Content-Type类型 为自定义post 做铺垫
-    if (config['cType']) {
-      config.headers['Content-Type'] = 'application/x-www-form-urlencoded;charset=UTF-8';
-    }
+//     // 如果设置了cType 说明是自定义 添加 Content-Type类型 为自定义post 做铺垫
+//     if (config['cType'] && config.headers) {
+//       config.headers['Content-Type'] = 'application/x-www-form-urlencoded;charset=UTF-8';
+//     }
 
-    // 自定义添加token header
-    const headerToken = await getToken();
-    if (headerToken) {
-      config.headers[LSKey.token] = headerToken;
-    }
+//     // 自定义添加token header
+//     const headerToken = await getToken();
+//     if (headerToken && config.headers) {
+//       config.headers[LSKey.token] = headerToken;
+//     }
 
-    return config;
-  },
-);
+//     return config;
+//   },
+// );
 
 /**
  * 请求后 - 响应拦截器

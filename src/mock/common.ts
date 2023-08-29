@@ -2,7 +2,7 @@ import { type MockMethod } from 'vite-plugin-mock'
 import { resultSuccess } from '../utils/mock'
 export default [
   {
-    url: '/admin/captcha/get',
+    url: '/common/captcha/get',
     method: 'get',
     response: () => {
       return resultSuccess({
