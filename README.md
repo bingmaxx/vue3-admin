@@ -65,7 +65,7 @@ export default defineConfig({
     port: 1234,
     proxy: {
       '/common': {
-        target: env.VITE_BASE_PATH,
+        target: 'xxx',
         changeOrigin: true
       },
     }
@@ -114,3 +114,30 @@ export default defineConfig(({ command, mode }) => {
     ],}
 })
 ```
+
+## 按需引入 ant-design-vue
+
+npm 安装 ant-design-vue 与 unplugin-vue-components：
+```sh
+npm i ant-design-vue --save 
+npm i unplugin-vue-components -D
+```
+
+vite.config.ts 文件中添加如下配置：
+```ts
+export default defineConfig(({ command, mode }) => {
+  return {
+    plugins: [
+      // ...
+      Components({
+        resolvers: [
+          AntDesignVueResolver({
+            importStyle: false,
+          }),
+        ],
+      }),
+    ],
+  }
+})
+```
+

@@ -16,5 +16,6 @@ getCaptcha()
 </script>
 
 <template>
+  <a-button type="primary">Primary Button</a-button>
   <div class="svg" v-html="svg_url"></div>
 </template>
