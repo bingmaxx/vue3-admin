@@ -29,6 +29,12 @@
   )
 }
 
+@mixin relative {
+  position: relative;
+  width: 100%;
+  height: 100%;
+}
+
 // $justify, $align: flex-start | flex-end | center | space-between | space-around
 @mixin flex-row($justify: flex-start, $align: flex-start) {
   display: flex;
