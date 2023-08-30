@@ -55,6 +55,24 @@ npm i axios
 
 之后在 `utils/request.ts` 文件下封装 axios 请求。具体接口见 `api` 目录。
 
+## 开发服务器设置
+[vite - 开发服务器选项](https://cn.vitejs.dev/config/server-options.html#server-host)
+
+首先是为开发服务器配置自定义代理，vite 配置文件 vite.config.ts 中添加如下配置：
+```ts
+export default defineConfig({
+  server: {
+    port: 1234,
+    proxy: {
+      '/common': {
+        target: env.VITE_BASE_PATH,
+        changeOrigin: true
+      },
+    }
+  },
+})
+```
+
 ## 使用 Mock
 基于 [vite-plugin-mock](https://github.com/vbenjs/vite-plugin-mock) 实现，细节见文档。
 ```sh
