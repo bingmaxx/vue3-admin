@@ -141,3 +141,15 @@ export default defineConfig(({ command, mode }) => {
 })
 ```
 
+首次引用 ant-design-vue 组件后会在项目根目录自动添加 components.d.ts 文件。文件内容如下：
+```ts
+export {}
+
+declare module 'vue' {
+  export interface GlobalComponents {
+    AButton: typeof import('ant-design-vue/es')['Button']
+    // ...
+  }
+}
+```
+
