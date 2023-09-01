@@ -12,6 +12,9 @@ declare module 'vue' {
     AFormItem: typeof import('ant-design-vue/es')['FormItem']
     AInput: typeof import('ant-design-vue/es')['Input']
     AInputPassword: typeof import('ant-design-vue/es')['InputPassword']
+    LayoutLeft: typeof import('./src/components/layout/LayoutLeft.vue')['default']
+    LayoutMain: typeof import('./src/components/layout/LayoutMain.vue')['default']
+    LayoutRight: typeof import('./src/components/layout/LayoutRight.vue')['default']
     RouterLink: typeof import('vue-router')['RouterLink']
     RouterView: typeof import('vue-router')['RouterView']
   }
