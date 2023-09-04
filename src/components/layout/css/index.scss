@@ -1,7 +1,15 @@
 .layout-main {
+  @include flex-row(flex-start, flex-start);
   .layout-left {
-    width: 336px;
+    width: 240px;
     height: 100vh;
-    background-color: #101213;
+    background-color: #1d1d1d;
+  }
+
+  .layout-right {
+    flex: 1;
+    height: 100vh;
+    overflow-x: hidden;
+    overflow-y: auto;
   }
 }

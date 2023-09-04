@@ -6,7 +6,7 @@ export const LSKey = {
 };
 
 export const text = {
-  app_name: 'Vue3 Admin',
+  app_name: 'VUE3 ADMIN',
   app_name_min: 'VA',
   slogen: 'VUE3 ADMIN',
 };
