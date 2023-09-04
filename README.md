@@ -53,7 +53,7 @@ export default defineConfig({
 npm i axios
 ```
 
-之后在 `utils/request.ts` 文件下封装 axios 请求。具体接口见 `api` 目录。
+之后在 `utils/request.ts` 文件下封装 axios 请求。具体接口见 `@/api` 目录。
 
 ## 开发服务器设置
 [vite - 开发服务器选项](https://cn.vitejs.dev/config/server-options.html#server-host)
@@ -125,6 +125,8 @@ npm i unplugin-vue-components -D
 
 vite.config.ts 文件中添加如下配置：
 ```ts
+import Components from 'unplugin-vue-components/vite'
+import { AntDesignVueResolver } from 'unplugin-vue-components/resolvers'
 export default defineConfig(({ command, mode }) => {
   return {
     plugins: [
@@ -152,4 +154,49 @@ declare module 'vue' {
   }
 }
 ```
+
+## 加载 svg 图标
+在 vite 中有多个插件可以加载 svg
+- [vite-plugin-svg-spritemap](https://github.com/g-makarov/vite-plugin-svg-spritemap) 将多个 svg 文件生成 svg 精灵图
+- [vite-plugin-svg-icons](https://github.com/vbenjs/vite-plugin-svg-icons) 生成 svg 精灵图
+- [vite-svg-loader](https://github.com/jpkleemans/vite-svg-loader) 将 svg 文件作为 Vue 组件加载（打包后每个 svg 是一个 js 文件）
+
+svg 可以每个单独加载，也可以合成一个精灵图一次加载，在本项目中，主要是路由菜单部分用到 svg 文件，因此将多个 svg 文件合成一个精灵图更适合，当前使用 `vite-plugin-svg-spritemap`：
+
+```sh
+npm i vite-plugin-svg-spritemap -D
+```
+
+vite.config.ts 文件中添加如下配置：
+```ts
+import { svgSpritemap } from 'vite-plugin-svg-spritemap'
+export default defineConfig(({ command, mode }) => {
+  return {
+    plugins: [
+      // ...
+      svgSpritemap({
+        pattern: './src/assets/iconsvg/*.svg',
+      }),
+    ],
+  }
+})
+```
+
+svg 文件目录为 `@/assets/iconsvg`，svg 规范可参考 [iconfont - 图标制作说明](https://www.iconfont.cn/icons/upload?spm=a313x.manage_type_myprojects.i3.d059fa781.71a83a81OQd7ZE) 闭合/少节点/合并/轮廓化…… svg 文件的 `fill` 需要清空或者为 ``。
+
+在 `@/components/svg` 目录封装 `IconSvg` 组件，具体见组件代码。全局样式文件 `@/styles/main.scss` 中设置 `.icon-svg` 默认样式：
+```scss
+// 全局 svg 组件样式
+.icon-svg {
+  width: 16px;
+  height: 16px;
+  fill: currentColor;
+}
+```
+之后便可使用 IconSvg 组件，传入 svg 文件名即可：
+```vue
+<IconSvg name=""></IconSvg>
+```
+
+执行 `npm run build` 命令后，dist 目录下将生成 `spritemap.svg` 文件，此为 svg 文件生成的精灵图。
 

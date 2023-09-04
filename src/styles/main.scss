@@ -110,6 +110,13 @@ a:hover {
   cursor: pointer;
 }
 
+// 全局 svg 组件样式
+.icon-svg {
+  width: 16px;
+  height: 16px;
+  fill: currentColor;
+}
+
 .g-t-im {
   font-size: $f-s-sm;
   color: $c-f1;
